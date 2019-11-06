@@ -38,7 +38,15 @@ for (let index = 0; index < quiz_type_options.length; index++) {
 console.log(quiz_types);
 // add Start Quiz Button
 let start_quiz_btn = document.createElement("button");
+start_quiz_btn.setAttribute("id", "start_quiz");
 start_quiz_btn.textContent = "Start Quiz";
+start_quiz_btn.onclick = function(event){
+    alert("Let's start code quiz! \nYou have 60 seconds to complete 5 questions.")
+    console.log("Start Quiz Button Clicked")
+    event.preventDefault();
+    window.location.href = "./quiz.html";
+}
+console.log(start_quiz_btn)
 
 console.log(start_form);
 
@@ -53,6 +61,7 @@ document.body.appendChild(time_display)
 time_display.appendChild(time);
 document.body.appendChild(h1_code_quiz);
 start_form.appendChild(quiz_types);
+// start_quiz_btn.appendChild(start_quiz_btn_link)
 start_form.appendChild(start_quiz_btn)
 document.body.appendChild(start_form)
 document.body.appendChild(view_high_scores_link)
