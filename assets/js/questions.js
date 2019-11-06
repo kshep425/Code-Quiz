@@ -8,7 +8,7 @@ var questions = [
     {
       title: "The condition in an if / else statement is enclosed within ____.",
       choices: ["quotes \"\"", "curly brackets {}", "parentheses ()", "square brackets []"],
-      answer: "parentheses",
+      answer: "parentheses ()",
       type: "html"
 
     },
@@ -22,7 +22,7 @@ var questions = [
     {
       title: "The condition in an if / else statement is enclosed within ____.",
       choices: ["quotes \"\"", "curly brackets {}", "parentheses ()", "square brackets []"],
-      answer: "parentheses",
+      answer: "parentheses ()",
       type: "html"
 
     },
@@ -36,7 +36,7 @@ var questions = [
     {
       title: "The condition in an if / else statement is enclosed within ____.",
       choices: ["quotes \"\"", "curly brackets {}", "parentheses ()", "square brackets []"],
-      answer: "parentheses",
+      answer: "parentheses ()",
       type: "html"
 
     },
@@ -49,7 +49,7 @@ var questions = [
       {
         title: "The condition in an if / else statement is enclosed within ____.",
         choices: ["quotes \"\"", "curly brackets {}", "parentheses ()", "square brackets []"],
-        answer: "parentheses",
+        answer: "parentheses ()",
         type: "css"
 
       },
@@ -63,7 +63,7 @@ var questions = [
       {
         title: "The condition in an if / else statement is enclosed within ____.",
         choices: ["quotes \"\"", "curly brackets {}", "parentheses ()", "square brackets []"],
-        answer: "parentheses",
+        answer: "parentheses ()",
         type: "css"
 
       },
@@ -77,14 +77,14 @@ var questions = [
       {
         title: "The condition in an if / else statement is enclosed within ____.",
         choices: ["quotes \"\"", "curly brackets {}", "parentheses ()", "square brackets []"],
-        answer: "parentheses",
+        answer: "parentheses ()",
         type: "css"
 
       },
       {
         title: "The condition in an if / else statement is enclosed within ____.",
         choices: ["quotes \"\"", "curly brackets {}", "parentheses ()", "square brackets []"],
-        answer: "parentheses",
+        answer: "parentheses ()",
         type: "javascript"
 
       },
@@ -98,7 +98,7 @@ var questions = [
       {
         title: "The condition in an if / else statement is enclosed within ____.",
         choices: ["quotes \"\"", "curly brackets {}", "parentheses ()", "square brackets []"],
-        answer: "parentheses",
+        answer: "parentheses ()",
         type: "javascript"
 
       },
@@ -112,14 +112,14 @@ var questions = [
       {
         title: "The condition in an if / else statement is enclosed within ____.",
         choices: ["quotes \"\"", "curly brackets {}", "parentheses ()", "square brackets []"],
-        answer: "parentheses",
+        answer: "parentheses ()",
         type: "javascript"
 
       },
       {
         title: "The condition in an if / else statement is enclosed within ____.",
         choices: ["quotes \"\"", "curly brackets {}", "parentheses ()", "square brackets []"],
-        answer: "parentheses",
+        answer: "parentheses ()",
         type: "jquery"
 
       },
@@ -133,7 +133,7 @@ var questions = [
       {
         title: "The condition in an if / else statement is enclosed within ____.",
         choices: ["quotes \"\"", "curly brackets {}", "parentheses ()", "square brackets []"],
-        answer: "parentheses",
+        answer: "parentheses ()",
         type: "jquery"
 
       },
@@ -147,7 +147,7 @@ var questions = [
       {
         title: "The condition in an if / else statement is enclosed within ____.",
         choices: ["quotes \"\"", "curly brackets {}", "parentheses ()", "square brackets []"],
-        answer: "parentheses",
+        answer: "parentheses ()",
         type: "jquery"
 
       },
