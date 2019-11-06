@@ -29,12 +29,16 @@ for (let index = 0; index < quiz_type_options.length; index++) {
     let quiz_type_option = document.createElement("option");
     quiz_type_option.setAttribute("id", index);
     quiz_type_option.setAttribute("value", quiz_type_options[index]);
+    quiz_types.appendChild(quiz_type_option);
+    if(index == 0){
+        quiz_type_option.setAttribute("selected", true);
+    }
     quiz_type_option.textContent = quiz_type_options[index];
 
     console.log(quiz_type_option)
-    quiz_types.appendChild(quiz_type_option);
-
 }
+
+
 console.log(quiz_types);
 // add Start Quiz Button
 let start_quiz_btn = document.createElement("button");
@@ -57,11 +61,18 @@ view_high_scores_link.setAttribute("href", "./high_scores.html")
 console.log(view_high_scores_link)
 
 //Add elements to page
+
+// - append timer elements
 document.body.appendChild(time_display)
 time_display.appendChild(time);
+
+// - append heading
 document.body.appendChild(h1_code_quiz);
+
+// - append form elements: quiz types and start button
 start_form.appendChild(quiz_types);
-// start_quiz_btn.appendChild(start_quiz_btn_link)
 start_form.appendChild(start_quiz_btn)
 document.body.appendChild(start_form)
+
+// - append high scores link
 document.body.appendChild(view_high_scores_link)
