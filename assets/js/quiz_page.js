@@ -11,10 +11,14 @@
 
 console.log("Let's start the Quiz!")
 
-// Set time left, question, answer, and result areas
+// Set time left, type, question, answer, and result areas
 let time_div = document.createElement("div");
 time_div.setAttribute("id", "time_area");
 console.log(time_div)
+
+let type_div = document.createElement('div');
+type_div.setAttribute("id", "type_area");
+console.log(type_div);
 
 let question_div = document.createElement("div");
 question_div.setAttribute("id", "question_area");
@@ -31,6 +35,7 @@ result_div.setAttribute("id", "result_area");
 let time = document.createElement("span")
 var time_left = 60;
 time.textContent = time_left;
+var error_time = 0;
 
 let time_display = document.createElement("p");
 time_display.textContent = "Time: ";
@@ -38,6 +43,18 @@ console.log(time_display)
 
 console.log(time);
 console.log(time_left);
+
+// Create type elements
+let type_sp = document.createElement("span");
+let type_p = document.createElement("p");
+type_p.textContent = "Type: "
+
+// Create question elements
+let question_h2 = document.createElement("h2");
+
+// Create answer elements
+let answers_ul = document.createElement("ul");
+answers_ul.setAttribute("id", "answer_list");
 
 // Navigate to next page when timer reaches 0
 function timer(){
@@ -62,43 +79,152 @@ function timer(){
     }, 1000)
 }
 
-// Get Questions out of Local Storage based on type
-let quiz_questions = localStorage.getItem("questions");
-quiz_questions = JSON.parse(quiz_questions);
-console.log(quiz_questions);
+function display_type_questions_and_answers(question){
+    new_answers_ul = document.createElement("ul");
+    ans_li = document.getElementById("answer_list")
+    answer_div.replaceChild(new_answers_ul, ans_li);
+    answers_ul = new_answers_ul;
+    answers_ul.setAttribute("id", "answer_list");
+    console.log(answers_ul);
+    debugger;
 
 
-// Type
+    let type = question["type"];
+    let quiz_question = question["title"];
+    let choices = question["choices"];
+    console.log(type);
+    console.log(quiz_question);
+    console.log(choices);
+    // Type
+    type_sp.textContent = type;
 
-// Add Question
+    // Add Question
+    question_h2.textContent = quiz_question;
+
+    // Add Choices
+    for (let index = 0; index < choices.length; index++) {
+        // Create answer and button elements
+        let choice = document.createElement("li");
+        choice.textContent = choices[index];
+        choice.setAttribute("id", choices[index]);
+        choice.setAttribute("selected_answer", choices[index]);
+        choice.setAttribute("data-index", index);
+
+        var choice_button = document.createElement("button");
+        choice_button.textContent = "Submit";
+        choice_button.setAttribute("selected_answer", choices[index]);
+        choice_button.setAttribute("data-index", index);
 
 
-// Add Answers
+        // Append answer and button elements
+        choice.appendChild(choice_button);
+        answers_ul.appendChild(choice);
+        console.log(choice)
+    }
 
+}
 
 // Area for Results
 
 //  - Add Horizontal Line
+let horizontal_line = document.createElement("hr")
+horizontal_line.setAttribute("hidden", true)
+
 //  - Add Result Message
+let correct_result_msg = "Correct";
+let wrong_result_msg = "Wrong";
 
-// Switch to next question after result is displayed!
+result_h3 = document.createElement("h3")
 
-// Switch to complete.html:
-//  * When 5 questions are answered
-//  * Or when timer reaches 0
+
 
 
 // Append Elements to page
-//   - Add time, question, answer, and result divs
+//   - Append time, question, answer, and result divs
 document.body.appendChild(time_div);
+document.body.appendChild(type_div);
 document.body.appendChild(question_div);
 document.body.appendChild(answer_div);
 document.body.appendChild(result_div);
 
-//   - Add time elements
+//   - Append time elements
 time_display.appendChild(time)
 time_div.appendChild(time_display);
 
+//  - Append type elements
+type_p.appendChild(type_sp)
+type_div.appendChild(type_p)
+
+//  - Append question elements
+question_div.appendChild(question_h2);
+
+//  - Append answers elements
+answer_div.appendChild(answers_ul);
+
+//  - Append results elements
+result_div.appendChild(horizontal_line);
+result_div.appendChild(result_h3);
+
+// Get Questions out of Local Storage based on type
+let quiz_questions = localStorage.getItem("questions");
+quiz_questions = JSON.parse(quiz_questions);
+console.log(quiz_questions);
+question_count = 1
+var current_question = quiz_questions[question_count - 1];
+display_type_questions_and_answers(current_question);
+
+
+
+// Listen for click on answer div and validate answer
+answer_div.addEventListener("click", function(event){
+    var element = event.target;
+    console.log(element);
+    console.log(element.getAttribute("data-index"));
+    console.log(element.getAttribute("selected_answer"))
+
+    let result = check_answer(element.getAttribute("selected_answer"));
+
+    if (result){
+        result_h3.textContent = correct_result_msg;
+    } else {
+        result_h3.textContent = wrong_result_msg;
+        error_time = error_time + 5;
+    }
+
+    // Switch to next question 1 second after result is displayed!
+    timeout = setTimeout(next_question, 1000);
+
+
+
+
+
+    //  * Or when timer reaches 0
+});
+
+function check_answer(selected_answer){
+    console.log(current_question["answer"])
+    console.log(selected_answer)
+
+    let correct = current_question["answer"] === selected_answer
+    console.log(correct)
+    return correct;
+}
+
+function next_question(){
+    question_count += 1;
+    if (question_count >= 6){
+        //  When 5 questions are answered
+        localStorage.setItem("score", time_left);
+        alert("Times Up!\n You scored " + time_left + " with error seconds " + error_time + "!");
+        debugger;
+        // Switch to complete.html:
+        window.location.href = "./complete.html"
+    }
+    current_question = quiz_questions[question_count];
+    console.log("question count: " + question_count);
+    result_h3.textContent = "";
+    display_type_questions_and_answers(current_question);
+}
 
 // Start Timer
 timer()
