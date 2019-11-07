@@ -89,9 +89,10 @@ high_score_button.addEventListener("click", function(event){
         scores = JSON.parse(scores);
     };
 
-    var d = new Date();
+    let d = new Date();
+    let formatted_date = d.getMonth() + "/" + d.getDate() +"/" + d.getFullYear();
 
-    let player_name_and_score = [player_name.value.trim(), d.getTime(), time_comp_left]
+    let player_name_and_score = [player_name.value.trim(), formatted_date, time_comp_left]
     scores.push(player_name_and_score)
     console.log(scores);
     localStorage.setItem("scores", JSON.stringify(scores));
