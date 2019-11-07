@@ -215,7 +215,7 @@ function next_question(){
 
     if (question_count >= 6){
         //  When 5 questions are answered
-        localStorage.setItem("score", time_left + error_time);
+        localStorage.setItem("score", time_left - error_time);
         alert("Times Up!\n You scored " + time_left + " with error seconds " + error_time + "!");
         // Switch to complete.html:
         window.location.href = "./complete.html"
