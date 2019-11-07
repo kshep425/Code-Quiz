@@ -72,7 +72,6 @@ function timer(){
             console.log(time)
             console.log(time_left)
             alert("Times Up!\n You scored 0!");
-            debugger;
             window.location.href = "./complete.html"
         }
 
@@ -80,21 +79,22 @@ function timer(){
 }
 
 function display_type_questions_and_answers(question){
+    // add code to replace old answers_ul with new_answers_ul
     new_answers_ul = document.createElement("ul");
     ans_li = document.getElementById("answer_list")
     answer_div.replaceChild(new_answers_ul, ans_li);
     answers_ul = new_answers_ul;
     answers_ul.setAttribute("id", "answer_list");
     console.log(answers_ul);
-    debugger;
 
-
+    // Get the question, type, question, and choices
     let type = question["type"];
     let quiz_question = question["title"];
     let choices = question["choices"];
     console.log(type);
     console.log(quiz_question);
     console.log(choices);
+
     // Type
     type_sp.textContent = type;
 
@@ -212,16 +212,20 @@ function check_answer(selected_answer){
 
 function next_question(){
     question_count += 1;
+
     if (question_count >= 6){
         //  When 5 questions are answered
-        localStorage.setItem("score", time_left);
+        localStorage.setItem("score", time_left + error_time);
         alert("Times Up!\n You scored " + time_left + " with error seconds " + error_time + "!");
-        debugger;
         // Switch to complete.html:
         window.location.href = "./complete.html"
     }
+
+    // Set current_question
     current_question = quiz_questions[question_count];
     console.log("question count: " + question_count);
+
+    // clear result display
     result_h3.textContent = "";
     display_type_questions_and_answers(current_question);
 }
