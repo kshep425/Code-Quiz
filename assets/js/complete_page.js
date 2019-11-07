@@ -82,7 +82,6 @@ document.body.appendChild(form_div);
 
 high_score_button.addEventListener("click", function(event){
     event.preventDefault();
-    debugger;
     let scores = localStorage.getItem("scores");
     if (scores === null){
         scores = [];
@@ -90,7 +89,9 @@ high_score_button.addEventListener("click", function(event){
         scores = JSON.parse(scores);
     };
 
-    let player_name_and_score = [player_name.value.trim(), time_comp_left]
+    var d = new Date();
+
+    let player_name_and_score = [player_name.value.trim(), d.getTime(), time_comp_left]
     scores.push(player_name_and_score)
     console.log(scores);
     localStorage.setItem("scores", JSON.stringify(scores));
