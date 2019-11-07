@@ -43,8 +43,9 @@ console.log(quiz_types);
 // add Start Quiz Button
 let start_quiz_btn = document.createElement("button");
 start_quiz_btn.setAttribute("id", "start_quiz");
+start_quiz_btn.setAttribute("class", "start_quiz");
 start_quiz_btn.textContent = "Start Quiz";
-start_quiz_btn.onclick = function(event){
+start_quiz_btn.onclick = function start_quiz (event){
     alert("Let's start code quiz! \nYou have 60 seconds to complete 5 questions.")
     console.log("Start Quiz Button Clicked")
     event.preventDefault();
