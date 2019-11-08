@@ -167,7 +167,25 @@ result_div.appendChild(result_h3);
 
 // Get Questions out of Local Storage based on type
 let quiz_questions = localStorage.getItem("questions");
+let selected_quiz_questions = []
 quiz_questions = JSON.parse(quiz_questions);
+
+// Get quiz questions that match selected_quiz_options
+let all_quiz_options = ["html", "css", "javascript", "jquery"]
+let quiz_options = localStorage.getItem("quiz_types")
+quiz_options = JSON.parse(quiz_options)
+if (quiz_options != [] || quiz_options != all_quiz_options){
+    console.log("filter questions to type" + quiz_options)
+    for (let i = 0; i < quiz_questions.length; i++) {
+        for (let j = 0; j < quiz_options.length; j++) {
+            if (quiz_questions[i]["type"] === quiz_options[j]){
+                selected_quiz_questions.push(quiz_questions[i])
+            }
+        }
+    }
+    quiz_questions = selected_quiz_questions
+}
+
 console.log(quiz_questions);
 question_count = 1
 var current_question = quiz_questions[question_count - 1];
@@ -192,7 +210,7 @@ answer_div.addEventListener("click", function(event){
     }
 
     // Switch to next question 1 second after result is displayed!
-    timeout = setTimeout(next_question, 1000);
+    timeout = setTimeout(next_question, 500);
 
 
 
@@ -216,6 +234,7 @@ function next_question(){
     if (question_count >= 6){
         //  When 5 questions are answered
         localStorage.setItem("score", time_left - error_time);
+        // localStorage.setItem("quiz_types", JSON.stringify(quiz_options));
         alert("Times Up!\n You scored " + time_left + " with error seconds " + error_time + "!");
         // Switch to complete.html:
         window.location.href = "./complete.html"
@@ -231,4 +250,4 @@ function next_question(){
 }
 
 // Start Timer
-timer()
+timer();
