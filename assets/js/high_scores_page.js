@@ -36,10 +36,13 @@ let header_row = scores_header.insertRow(0);
 let player_name_head = header_row.insertCell(0);
 let date_head = header_row.insertCell(1);
 let score_head = header_row.insertCell(2);
+let quiz_type_head = header_row.insertCell(3);
 
 player_name_head.textContent = "Player Name";
 date_head.textContent = "Date";
 score_head.textContent = "Score";
+quiz_type_head.textContent = "Quiz Types";
+
 // each row from scores in internal storage will display
 let high_scores = localStorage.getItem("scores");
 high_scores = JSON.parse(high_scores);
