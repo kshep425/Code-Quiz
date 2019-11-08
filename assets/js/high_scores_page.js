@@ -18,7 +18,7 @@ let code_quiz_div, code_quiz_h1,        // code header area
     score_head,
     quiz_type_head,
     high_scores, new_scores_table,
-    index,                              // for loop indexes
+    index, index2,                      // for loop indexes
     buttons_div, play_again_button, clear_scores_button // buttons area
 
 // Code Quiz H1
@@ -62,13 +62,13 @@ high_scores = localStorage.getItem("scores");
 high_scores = JSON.parse(high_scores);
 if( high_scores != null){
 
-    for (let index = 0; index < high_scores.length; index++) {
+    for (index = 0; index < high_scores.length; index++) {
         high_score = high_scores[index];
         let row = scores_table.insertRow(index+1);
 
-        for (let index = 0; index < high_score.length; index++) {
-            let cell = row.insertCell(index);
-            cell.innerHTML = high_score[index];
+        for (index2 = 0; index2 < high_score.length; index2++) {
+            let cell = row.insertCell(index2);
+            cell.innerHTML = high_score[index2];
 
         }
     }
