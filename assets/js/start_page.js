@@ -1,12 +1,21 @@
-let time_div, time_display, time;
-let code_quiz_div, code_quiz_h1;
-let start_form_div, start_form;
-let quiz_type_div, quiz_types, quiz_type_options, quiz_type_option;
-let start_button_div, start_quiz_btn;
-let high_scores_div, view_high_scores_link;
-
 // Code Quiz Start Page
 console.log("Let's Start the Code Quiz")
+
+/*
+On the start page, the player can:
+ -  select the type of quiz questions to include in the code quiz.
+ -  start the quiz.
+ -  or view the high scores
+*/
+
+let time_div, time_display, time,           // time section
+    code_quiz_div, code_quiz_h1,            //code quiz header section
+    start_form_div, start_form,             // start quiz form section
+    quiz_type_div, quiz_type_options,       // quiz type options section
+    start_button_div, start_quiz_btn,       // start quiz button section
+    high_scores_div, view_high_scores_link, //high scores link section
+    index,                                  // for loop index
+    selected_quiz_options;
 
 // create page areas for time, code quiz header, start quiz form, and high scores.
 time_div = document.createElement("div");
@@ -25,62 +34,81 @@ start_button_div.setAttribute("id", "start_button_area");
 // add timer starting at 0
 time = document.createElement("span");
 time.textContent = 0;
-console.log(time)
-
 
 time_display = document.createElement("p");
 time_display.textContent = "Time: " ;
-console.log(time_display)
 
 //add heading
 h1_code_quiz = document.createElement("h1");
 h1_code_quiz.textContent = "Code Quiz";
 h1_code_quiz.setAttribute("style", "text-align: center");
-console.log(h1_code_quiz);
-
 
 // Create form
 start_form = document.createElement("form");
 // add quiz question types
-quiz_types = document.createElement("select")
-quiz_types.setAttribute("name", "quiz_types");
-quiz_types.setAttribute("multiple", true)
 quiz_type_options = ["html", "css", "javascript", "jquery"]
-for (let index = 0; index < quiz_type_options.length; index++) {
-    let quiz_type_option = document.createElement("option");
-    quiz_type_option.setAttribute("id", index);
+
+for (index = 0; index < quiz_type_options.length; index++) {
+    let quiz_types = document.createElement("p")
+    let quiz_type_option = document.createElement("input");
+    quiz_type_option.setAttribute("type", "checkbox")
+    quiz_type_option.setAttribute("id", quiz_type_options[index]);
     quiz_type_option.setAttribute("value", quiz_type_options[index]);
-    quiz_types.appendChild(quiz_type_option);
-    if(index == 0){
-        quiz_type_option.setAttribute("selected", true);
-    }
+
+    quiz_types.textContent = quiz_type_options[index];
+
+    quiz_types.appendChild(quiz_type_option)
+    start_form.appendChild(quiz_types)
+
     quiz_type_option.textContent = quiz_type_options[index];
 
-    console.log(quiz_type_option)
 }
 
+// check if quiz_type_option isChecked? Add to selected_quiz_options object
 
-console.log(quiz_types);
+function isChecked(){
+
+    let all_quiz_types = ["html", "css", "javascript", "jquery"];
+    let quiz_types = [];
+    // add checked types to quiz_types array
+    for (let i = 0; i < all_quiz_types.length; i++) {
+        const opt = all_quiz_types[i];
+        if (document.getElementById(opt).checked){
+            quiz_types.push(opt);
+        };
+    };
+
+    // if no quiz types are selected, default to all true
+    if (quiz_types === []){
+        quiz_types = all_quiz_types;
+    }
+
+    // Store selected quiz types in local storage
+    localStorage.setItem("quiz_types", JSON.stringify(quiz_types));
+
+};
+
 // add Start Quiz Button
 start_quiz_btn = document.createElement("button");
 start_quiz_btn.setAttribute("id", "start_quiz");
 start_quiz_btn.setAttribute("class", "start_quiz");
+start_quiz_btn.setAttribute("type", "Submit")
 start_quiz_btn.textContent = "Start Quiz";
 start_quiz_btn.onclick = function start_quiz (event){
     alert("Let's start code quiz! \nYou have 60 seconds to complete 5 questions.")
+
     console.log("Start Quiz Button Clicked")
+
+    isChecked();
+
     event.preventDefault();
     window.location.href = "./quiz.html";
 }
-console.log(start_quiz_btn)
-
-console.log(start_form);
 
 // add view high scores link
 view_high_scores_link = document.createElement("a");
 view_high_scores_link.textContent = "View High Scores"
 view_high_scores_link.setAttribute("href", "./high_scores.html")
-console.log(view_high_scores_link)
 
 //Add elements to page
 
@@ -94,7 +122,6 @@ code_quiz_div.appendChild(h1_code_quiz);
 document.body.appendChild(code_quiz_div);
 
 // - append form elements: quiz types and start button
-quiz_type_div.appendChild(quiz_types)
 start_form.appendChild(quiz_type_div);
 start_button_div.appendChild(start_quiz_btn);
 start_form.appendChild(start_button_div);
