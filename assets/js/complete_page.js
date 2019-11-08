@@ -89,10 +89,13 @@ high_score_button.addEventListener("click", function(event){
         scores = JSON.parse(scores);
     };
 
+    let quiz_types = localStorage.getItem("quiz_types");
+    console.log(quiz_types)
+
     let d = new Date();
     let formatted_date = d.getMonth() + "/" + d.getDate() +"/" + d.getFullYear();
 
-    let player_name_and_score = [player_name.value.trim(), formatted_date, time_comp_left]
+    let player_name_and_score = [player_name.value.trim(), formatted_date, time_comp_left, quiz_types]
     scores.push(player_name_and_score)
     console.log(scores);
     localStorage.setItem("scores", JSON.stringify(scores));
