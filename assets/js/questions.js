@@ -195,7 +195,7 @@ var questions = [
 
 // https://www.w3resource.com/javascript-exercises/javascript-array-exercise-17.php
 function shuffle(arra1) {
-    var ctr = arra1.length,
+    let ctr = arra1.length,
     temp,
     index;
 
