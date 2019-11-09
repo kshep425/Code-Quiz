@@ -151,7 +151,7 @@ function isChecked(){
     };
 
     // if no quiz types are selected, default to all true
-    if (quiz_types === []){
+    if (quiz_types.length === 0){
         quiz_types = all_quiz_types;
     }
 
