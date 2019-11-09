@@ -86,12 +86,12 @@ player_name_text.textContent = "Enter Name: ";
 player_name = document.createElement("input");
 player_name.setAttribute("type", "text");
 player_name.setAttribute("name", "player_name");
-player_name.setAttribute("class", "form-control")
+player_name.setAttribute("class", "form-control ml-3")
 
 // - Submit High Score Button
 high_score_button = document.createElement("button");
 high_score_button.textContent = "Submit High Score";
-high_score_button.setAttribute("class", "btn btn-primary")
+high_score_button.setAttribute("class", "btn btn-secondary")
 
 
 // Append to window
