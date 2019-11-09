@@ -258,7 +258,7 @@ function display_type_questions_and_answers(question){
     // Get the question, type, question, and choices
     let type = question["type"];
     let quiz_question = question["title"];
-    let choices = question["choices"];
+    let choices = shuffle(question["choices"]);
 
     // Type
     type_sp.textContent = type;
@@ -290,6 +290,26 @@ function display_type_questions_and_answers(question){
     }
 
 }
+
+// https://www.w3resource.com/javascript-exercises/javascript-array-exercise-17.php
+function shuffle(arra1) {
+    let ctr = arra1.length,
+      temp,
+      index;
+
+    // While there are elements in the array
+    while (ctr > 0) {
+      // Pick a random index
+      index = Math.floor(Math.random() * ctr);
+      // Decrease ctr by 1
+      ctr--;
+      // And swap the last element with it
+      temp = arra1[ctr];
+      arra1[ctr] = arra1[index];
+      arra1[index] = temp;
+    }
+    return arra1;
+  }
 
 // Display Questions and Answers
 display_type_questions_and_answers(current_question);
