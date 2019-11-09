@@ -149,15 +149,17 @@ quiz_options = localStorage.getItem("quiz_types");
 quiz_options = JSON.parse(quiz_options)
 
 console.log("filter questions to types: " + quiz_options)
-for (i = 0; i < quiz_questions.length; i++) {
-    for (j = 0; j < quiz_options.length; j++) {
-        if (quiz_questions[i]["type"] === quiz_options[j]){
-            selected_quiz_questions.push(quiz_questions[i])
+if (quiz_options.length != 0){
+
+    for (i = 0; i < quiz_questions.length; i++) {
+        for (j = 0; j < quiz_options.length; j++) {
+            if (quiz_questions[i]["type"] === quiz_options[j]){
+                selected_quiz_questions.push(quiz_questions[i])
+            }
         }
     }
+    quiz_questions = selected_quiz_questions
 }
-quiz_questions = selected_quiz_questions
-
 
 // Set Question Count
 question_count = 1
@@ -273,13 +275,13 @@ function display_type_questions_and_answers(question){
         choice.setAttribute("id", choices[index]);
         choice.setAttribute("selected_answer", choices[index]);
         choice.setAttribute("data-index", index);
-        choice.setAttribute("class", "list-group-item list-group-item-action list-group-item-primary d-flex justify-content-between")
+        choice.setAttribute("class", "list-group-item list-group-item-action d-flex justify-content-between")
 
         var choice_button = document.createElement("button");
         choice_button.textContent = "Submit";
         choice_button.setAttribute("selected_answer", choices[index]);
         choice_button.setAttribute("data-index", index);
-        choice_button.setAttribute("class", "btn btn-primary")
+        choice_button.setAttribute("class", "btn btn-secondary")
 
 
         // Append answer and button elements
