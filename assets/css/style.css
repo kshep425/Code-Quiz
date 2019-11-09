@@ -2,10 +2,7 @@ html, body{
     background-image: url("../img/white_paperboard.png");
 }
 
-div {
-    border: 1px dashed gray;
-    background-color: cornsilk;
-}
+
 
 ul {
     margin-inline-start: 0px;
