@@ -64,7 +64,7 @@ headers.forEach(header => {
 table_body = document.createElement("tbody")
 
 // add classes
-scores_header.setAttribute("class", "table-primary")
+scores_header.setAttribute("class", "table-secondary")
 
 // each row from scores in internal storage will display
 high_scores = localStorage.getItem("scores");
@@ -93,7 +93,7 @@ buttons_div.setAttribute("id", "buttons_area");
 // - Navigate to quiz.html
 play_again_button = document.createElement("button")
 play_again_button.setAttribute("id", "play_again");
-play_again_button.setAttribute("class", "start_quiz btn btn-primary m-3");
+play_again_button.setAttribute("class", "start_quiz btn btn-secondary m-3");
 play_again_button.textContent = "Play Again";
 
 
@@ -103,7 +103,7 @@ play_again_button.textContent = "Play Again";
 clear_scores_button = document.createElement("button");
 clear_scores_button.setAttribute("id", "clear_scores");
 clear_scores_button.textContent = "Clear Scores";
-clear_scores_button.setAttribute("class", "btn btn-primary m-3")
+clear_scores_button.setAttribute("class", "btn btn-secondary m-3")
 
 // Append Elements to Window
 code_quiz_div.appendChild(code_quiz_h1);
