@@ -18,7 +18,7 @@ Don't run out of time! You lose if 60 seconds passes.
 In addtion, this tool was created to test my javascript skills, all html elements were created and added using javascript.  The pages were styled using bootstrap.
 
 ## Usage
-<a href="./assets/audioVisual/CodeQuiz.webm">Watch usage video</a>
+<a href="https://drive.google.com/file/d/1Oledgo2GGPNYjzLUQiwgaENyZ-nQtNow/view">Watch usage video</a>
 
 ### Quiz Question Types
 There are four quiz question options covering coding topics:
