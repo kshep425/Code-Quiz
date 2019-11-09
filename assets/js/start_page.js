@@ -69,7 +69,7 @@ quiz_type_options = ["html", "css", "javascript", "jquery"]
 // Create Start Quiz Button
 start_quiz_btn = document.createElement("button");
 start_quiz_btn.setAttribute("id", "start_quiz");
-start_quiz_btn.setAttribute("class", "start_quiz btn btn-primary clear-fix");
+start_quiz_btn.setAttribute("class", "start_quiz btn btn-secondary clear-fix");
 start_quiz_btn.setAttribute("type", "Submit")
 start_quiz_btn.textContent = "Start Quiz";
 
@@ -106,7 +106,7 @@ document.body.appendChild(container_div)
 // Create a select button/checkbox for each quiz type
 for (index = 0; index < quiz_type_options.length; index++) {
     let quiz_types = document.createElement("p");
-    quiz_types.setAttribute("class", "btn btn-primary d-inline-block m-3");
+    quiz_types.setAttribute("class", "btn btn-secondary d-inline-block m-3");
     quiz_types.textContent = quiz_type_options[index] + "  ";
 
     let quiz_type_option = document.createElement("input");
